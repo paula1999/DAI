@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block contenido %}
+    {% if session['username'] == '' or not 'username' in session%}
+        <div class="alert alert-warning" role="alert">
+            Para acceder a esta página debes iniciar sesión.
+        </div>
+    {% else %}
+        <h2>Datos personales</h2>
+
+        <p><strong>Nombre: </strong> {{ username['nombre'] }}</p>
+        <p><strong>Apellidos: </strong> {{ username['apellidos'] }}</p>
+        <p><strong>Nombre de usuario: </strong> {{ session['username'] }}</p>
+        <p><strong>Contraseña: </strong> {{ username['password'] }}</p>
+
+        <a class="btn btn-outline-light btn-success me-2" href="./editar_usuario">Editar usuario</a>
+        <a class="btn btn-outline-light btn-danger me-2" href="./eliminar_usuario">Eliminar usuario</a>
+    {% endif %}
+{% endblock %}

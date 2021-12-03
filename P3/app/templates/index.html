@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% block contenido %}
+  {% if session['username'] == '' or not 'username' in session %}
+    <h3>Hola,</h3>
+    <p>inicia sesión o regístrate.</a>
+  {% else %}
+    <h4>Página de inicio</h4>
+  {% endif %}
+{% endblock %}
