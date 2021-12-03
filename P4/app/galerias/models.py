@@ -16,3 +16,7 @@ class Cuadro(models.Model):
     autor = models.CharField(max_length=100)
     fecha_creacion = models.DateField(default=timezone.now)
     # ...
+    imagen = models.ImageField(upload_to='img/', default='img/default.jpg') # imagen del cuadro
+
+# TODO ?
+# no se si hacen falta mas clases o modificarlas
