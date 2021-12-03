@@ -1,27 +1,11 @@
-<!-- TODO -->
 {% extends 'index.html' %}
 
+{% load crispy_forms_tags %}
 
 {% block contenido %}
-    <form class="form-inline" method="POST" action="./crear_cuadro/">
-        <div class="input-group">
-        <strong>Nombre: </strong> <input name="nombre" type="text" class="form-control me-2" id="name" placeholder="Nombre" required>
-        </div>
-        <br>
-        <div class="input-group">
-        <strong>Autor: </strong> <input name="apellidos" type="text" class="form-control me-2" id="pwd" placeholder="Autor" required>
-        </div>
-        <br>
-        <div class="input-group">
-        <strong>Fecha de creación: </strong> <input name="username" type="text" class="form-control me-2" id="usr" placeholder="Fecha de creación" required> 
-        </div>
-        <br>
-        <div class="input-group">
-        <strong>Imagen: </strong> <input name="password" type="password" class="form-control me-2" id="pwd" placeholder="Imagen" required>
-        </div>
-        <br>
-
-        <button type="submit" class="btn btn-outline-light bg-primary me-2">Crear</button>
-        
+    <form method="POST" action="/crear_cuadro">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Crear cuadro</button>
     </form>
 {% endblock %}
