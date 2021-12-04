@@ -1,11 +1,9 @@
 {% extends 'index.html' %}
 
-{% load crispy_forms_tags %}
-
 {% block contenido %}
-    <form method="POST" action="/crear_galeria">
+    <form method="POST" class="post-form" action="/crear_galeria">
         {% csrf_token %}
-        {{ form|crispy }}
+        {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Crear galería</button>
     </form>
 {% endblock %}

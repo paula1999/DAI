@@ -1,5 +1,32 @@
 {% extends 'index.html' %}
 
+{% load static %}
+
 {% block contenido %}
     <!-- TODO -->
+    {% for cuadro in cuadros %}
+        Identificador: {{ cuadro.id }}
+        <br>
+        Nombre: {{ cuadro.nombre }}
+        <br>
+        Galeria: {{ cuadro.galeria }}
+        <br>
+        Autor: {{ cuadro.autor }}
+        <br>
+        Fecha de creacion: {{ cuadro.fecha_creacion }}
+        <br>
+        Imagen: <img src="{{ cuadro.imagen }}" bg alt="" width="30" class="d-inline-block align-text-top">
+        <br>
+        Imagen: <img src="{% static 'mona_lisa.jpeg' %}"/>
+        <br>
+        <a href="./modificar_cuadro/{{ cuadro.id }}" class="btn btn-primary">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Modificar cuadro
+        </a>
+        <a href="./borrar_cuadro/{{ cuadro.id }}" class="btn btn-primary">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Borrar cuadro
+        </a>
+        <br>
+    {% endfor %}
 {% endblock %}

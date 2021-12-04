@@ -1,7 +1,6 @@
 # galerias/forms.py
 from django import forms
 from .models import *
-from django.utils import timezone
 
 class GaleriaForm(forms.ModelForm):
     class Meta:

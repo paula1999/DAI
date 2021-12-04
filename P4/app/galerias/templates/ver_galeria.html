@@ -2,4 +2,21 @@
 
 {% block contenido %}
     <!-- TODO -->
+    {% for galeria in galerias %}
+        Identificador: {{ galeria.id }}
+        <br>
+        Nombre: {{ galeria.nombre }}
+        <br>
+        Dirección: {{ galeria.direccion }}
+        <br>
+        <a href="./modificar_galeria/{{ galeria.id }}" class="btn btn-primary">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Modificar galería
+        </a>
+        <a href="./borrar_galeria/{{ galeria.id }}" class="btn btn-primary">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Borrar galería
+        </a>
+        <br>
+    {% endfor %}
 {% endblock %}

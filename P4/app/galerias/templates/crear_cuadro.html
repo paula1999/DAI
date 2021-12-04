@@ -1,11 +1,9 @@
 {% extends 'index.html' %}
 
-{% load crispy_forms_tags %}
-
 {% block contenido %}
-    <form method="POST" action="/crear_cuadro">
+    <form method="POST" class="post-form" action="/crear_cuadro">
         {% csrf_token %}
-        {{ form|crispy }}
+        {{ form.as_p }}
         <button type="submit" class="btn btn-primary">Crear cuadro</button>
     </form>
 {% endblock %}
