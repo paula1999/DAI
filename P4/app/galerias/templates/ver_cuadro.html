@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block contenido %}
-    <!-- TODO -->
+    
     {% for cuadro in cuadros %}
         Identificador: {{ cuadro.id }}
         <br>
@@ -15,9 +15,9 @@
         <br>
         Fecha de creacion: {{ cuadro.fecha_creacion }}
         <br>
-        Imagen: <img src="{{ cuadro.imagen }}" bg alt="" width="30" class="d-inline-block align-text-top">
-        <br>
-        Imagen: <img src="{% static 'mona_lisa.jpeg' %}"/>
+        Imagen: <img src="{% static 'mona_lisa.jpeg' %}"/> <!-- TODO no funciona -->
+        Imagen: <img src="{{STATIC_URL}}{{cuadro.imagen}}"/> <!-- TODO no funciona -->
+        Imagen: <img src="{{cuadro.imagen.url}}"/> <!-- TODO no funciona -->
         <br>
         <a href="./modificar_cuadro/{{ cuadro.id }}" class="btn btn-primary">
             <svg class="bi me-2" width="16" height="16"></svg>
@@ -27,6 +27,6 @@
             <svg class="bi me-2" width="16" height="16"></svg>
             Borrar cuadro
         </a>
-        <br>
+        <hr>
     {% endfor %}
 {% endblock %}
