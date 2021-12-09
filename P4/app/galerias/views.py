@@ -21,7 +21,7 @@ def ver_galeria(request):
 
 def crear_cuadro(request):
     if request.method == 'POST':
-        form = CuadroForm(request.POST)
+        form = CuadroForm(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()
@@ -43,15 +43,6 @@ def crear_galeria(request):
 
     return render(request, 'crear_galeria.html', {"form":form})
 
-def aniadir_cuadro(request, n):
-    # TODO
-    pass
-
-def aniadir_galeria(request):
-    # TODO
-    pass
-
-
 def borrar_cuadro(request, n):
     c = Cuadro.objects.get(id=n)
     c.delete()
@@ -69,7 +60,7 @@ def modificar_cuadro(request, n):
     form = CuadroForm(instance=c)
 
     if request.method == 'POST':
-        form = CuadroForm(request.POST, instance=c)
+        form = CuadroForm(request.POST, request.FILES, instance=c)
 
         if form.is_valid():
             form.save()
