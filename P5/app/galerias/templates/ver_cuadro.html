@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+
+{% load static %}
+
+{% block contenido %}
+    
+    {% for cuadro in cuadros %}
+        Identificador: {{ cuadro.id }}
+        <br>
+        Nombre: {{ cuadro.nombre }}
+        <br>
+        Galeria: {{ cuadro.galeria }}
+        <br>
+        Autor: {{ cuadro.autor }}
+        <br>
+        Fecha de creacion: {{ cuadro.fecha_creacion }}
+        <br>
+        Imagen: <img src="{{ cuadro.imagen.url }}" width="140" height="220" alt="{{ cuadro.imagen.url }}"/>
+        <br>
+        <a href="./modificar_cuadro/{{ cuadro.id }}" class="btn btn-primary">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Modificar cuadro
+        </a>
+        <a href="./borrar_cuadro/{{ cuadro.id }}" class="btn btn-primary">
+            <svg class="bi me-2" width="16" height="16"></svg>
+            Borrar cuadro
+        </a>
+        <hr>
+    {% endfor %}
+{% endblock %}

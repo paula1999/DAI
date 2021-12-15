@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block contenido %}
+    <form method="POST" action="/modificar_galeria/{{n}}">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-primary">Modificar galería</button>
+    </form>
+{% endblock %}

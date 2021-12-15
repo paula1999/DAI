@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block contenido %}
+    <form method="POST" class="post-form" action="/crear_cuadro" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Crear cuadro</button>
+    </form>
+{% endblock %}
