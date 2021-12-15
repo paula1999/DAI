@@ -34,6 +34,7 @@
                             <li class="active">
                                 <a class="nav-link" href="{% url 'index' %}">Inicio</a>
                             </li>
+
                             {% if request.user.is_authenticated %}
                                 <li>
                                     <a href="{% url 'account_logout' %}" class="nav-link text-white">Cerrar sesión</a>
@@ -96,9 +97,11 @@
                 <!-- Contenido -->
                 <div class="col-8 p-2 m-2" id="content">
                     <div id="contenido" >
-                        {% block contenido %}
+                        {% block content %}
+                        
                             {% if request.user.is_authenticated %}
                                 <h2>Bienvenido a la exposición de la galería de arte, {{ request.user.username }}.</h2>
+                                <h1>AAAAAAAAAAAAa</h1>
                             {% else %}
                                 <h2>Bienvenido a la exposición de la galería de arte.</h2>
                                 <br>
@@ -106,7 +109,8 @@
                                 <br>
                                 Si desea modificar los datos de la galeria o de los cuadros, debe iniciar sesión.
                             {% endif %}
-                        {% endblock %}
+                        
+                        {% endblock %}                        
                     </div>
                 </div>
             </div>
