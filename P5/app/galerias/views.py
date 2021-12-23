@@ -36,8 +36,8 @@ def crear_cuadro(request):
 
     return render(request, 'crear_cuadro.html', {"form":form})
 
-@user_passes_test(lambda u: u.is_superuser, login_url=settings.LOGIN_URL)
-#@permission_required('galerias.add_galeria')
+@user_passes_test(lambda u: u.is_superuser, login_url='/admin/logout/')
+@user_passes_test(lambda u: u.is_superuser, login_url='/admin/login/')
 def crear_galeria(request):
     if request.method == 'POST':
         form = GaleriaForm(request.POST)
@@ -57,7 +57,8 @@ def borrar_cuadro(request, n):
 
     return redirect('ver_cuadro')
 
-@user_passes_test(lambda u: u.is_superuser)
+@user_passes_test(lambda u: u.is_superuser, login_url='/admin/logout/')
+@user_passes_test(lambda u: u.is_superuser, login_url='/admin/login/')
 def borrar_galeria(request, n):
     g = Galeria.objects.get(id=n)
     g.delete()
@@ -79,7 +80,8 @@ def modificar_cuadro(request, n):
 
     return render(request, 'modificar_cuadro.html', {"form":form, "n":n})
 
-@user_passes_test(lambda u: u.is_superuser)
+@user_passes_test(lambda u: u.is_superuser, login_url='/admin/logout/')
+@user_passes_test(lambda u: u.is_superuser, login_url='/admin/login/')
 def modificar_galeria(request, n):
     g = Galeria.objects.get(id=n)
     form = GaleriaForm(instance=g)
