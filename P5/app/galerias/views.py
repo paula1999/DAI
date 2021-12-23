@@ -4,7 +4,9 @@ from .models import *
 from .forms import *
 from django.contrib.auth.decorators import user_passes_test
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib.auth.decorators import permission_required
 
+from django.conf import settings
 # Create your views here
 
 def index(request):
@@ -34,7 +36,8 @@ def crear_cuadro(request):
 
     return render(request, 'crear_cuadro.html', {"form":form})
 
-@user_passes_test(lambda u: u.is_superuser)
+@user_passes_test(lambda u: u.is_superuser, login_url=settings.LOGIN_URL)
+#@permission_required('galerias.add_galeria')
 def crear_galeria(request):
     if request.method == 'POST':
         form = GaleriaForm(request.POST)
