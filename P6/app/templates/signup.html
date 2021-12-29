@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+
+{% block contenido %}
+<h2>Introduce tus datos</h2>
+
+<form class="form-inline" method="POST" action="./signup">
+    <div class="input-group"> <!-- Para que esten en linea -->
+      <strong>Nombre: </strong> <input name="nombre" type="text" class="form-control me-2" id="name" placeholder="Nombre" required>
+    </div>
+    <br>
+    <div class="input-group">
+      <strong>Apellidos: </strong> <input name="apellidos" type="text" class="form-control me-2" id="pwd" placeholder="Apellidos" required>
+    </div>
+    <br>
+    <div class="input-group">
+      <strong>Nombre de usuario: </strong> <input name="username" type="text" class="form-control me-2" id="usr" placeholder="Nombre de usuario" required> 
+    </div>
+    <br>
+    <div class="input-group">
+      <strong>Contraseña: </strong> <input name="password" type="password" class="form-control me-2" id="pwd" placeholder="Contraseña" required>
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-outline-light bg-primary me-2">Registrarse</button>
+    
+</form>
+{% endblock %}

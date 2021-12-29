@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% block contenido %}
+  {% if error %}
+    <p class=error><strong>Error:</strong> {{ error }}
+  {% else %}
+    <h1>Bienvenido, {{ username }}</h1>
+    <div class="alert alert-success" role="alert">
+      Has iniciado sesión correctamente.
+    </div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block contenido %}
+    {% if session['username'] == '' or not 'username' in session%}
+    <div class="alert alert-warning" role="alert">
+        Para acceder a esta página debes iniciar sesión.
+    </div>
+    {% else %}
+        <h2>Modifica tus datos</h2>
+
+        <form class="form" method="POST" action="./editar_usuario">
+            <strong>Nombre: </strong>  <input name="nombre" type="text" class="form-control me-2" id="name" placeholder="{{ username['nombre'] }}" required>
+            
+            <strong>Apellidos: </strong> <input name="apellidos" type="text" class="form-control me-2" id="pwd" placeholder="{{ username['apellidos'] }}" required>
+            
+            <strong>Nombre de usuario: </strong> <input name="username" type="text" class="form-control me-2" id="usr" placeholder="{{ session['username'] }}" required> 
+            
+            <strong>Contraseña: </strong> <input name="password" type="password" class="form-control me-2" id="pwd" placeholder="{{ username['password'] }}" required>
+
+            <br>
+
+            <button type="submit" class="btn btn-outline-light btn-success me-2">Confirmar cambios</button>
+
+        </form>
+    {% endif %}
+{% endblock %}

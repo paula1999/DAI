@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+{% block contenido %}
+    <h3>Buscador de Pokémon</h3>
+
+    <form class="form-inline" method="POST" action="./mongo">
+        <div class="input-group"> <!-- Para que esten en linea -->
+          <strong>Número: </strong>
+          <input name="numero" type="text" class="form-control me-2" id="numero" placeholder="Numero" required>
+          <button type="submit" class="btn btn-outline-light bg-primary me-2">Buscar</button>    
+        </div>
+    </form>
+
+    <br>
+
+    <form class="form-inline" method="POST" action="./mongo">
+        <div class="input-group">
+          <strong>Nombre: </strong>
+          <input name="nombre" type="text" class="form-control me-2" id="nombre" placeholder="Nombre" required>
+          <button type="submit" class="btn btn-outline-light bg-primary me-2">Buscar</button>
+        </div>    
+    </form>
+
+    <br>
+
+    <form class="form-inline" method="POST" action="./mongo">
+        <div class="input-group">
+          <strong>Tipo: </strong>
+          <input name="tipo" type="text" class="form-control me-2" id="tipo" placeholder="Tipo" required> 
+          <button type="submit" class="btn btn-outline-light bg-primary me-2">Buscar</button>
+        </div>
+    </form>
+
+    <br>
+
+    <form class="form-inline" method="POST" action="./mongo">
+        <button type="submit" class="btn btn-outline-light bg-info me-2">Mostrar todos</button>
+    </form>
+
+    <br>
+
+    <div class="row">
+        <div class="col"><strong>Número</strong></div>
+        <div class="col"><strong>Nombre</strong></div>
+        <div class="col"><strong>Imagen</strong></div>
+        <div class="col"><strong>Tipo</strong></div>
+        <div class="col"><strong>Altura</strong></div>
+        <div class="col"><strong>Peso</strong></div>
+        <div class="col"><strong>Debilidades</strong></div>
+        <div class="col"><strong>Previa evolución</strong></div>
+        <div class="col"><strong>Siguiente evolución</strong></div>
+    </div>
+    
+    {% for p in pokemon %}
+        <div class="row">
+            <div class="col mt-4">{{p['num']}}</div>
+            <div class="col mt-4">{{p['name']}}</div>
+            <div class="col"><img src="{{p['img']}}" width="80" height="80"></img></div>
+            <div class="col mt-3">
+                {% for tipo in p['type'] %}
+                    {{tipo}}
+                    <br/>
+                {% endfor %}
+            </div>
+            <div class="col mt-4">{{p['height']}}</div>
+            <div class="col mt-4">{{p['weight']}}</div>
+            <div class="col">
+                {% for weakness in p['weaknesses'] %}
+                    {{weakness}}
+                    <br/>
+                {% endfor %}
+            </div>
+            <div class="col">
+                {% if 'prev_evolution' in p %}
+                    {% for antecesor in p['prev_evolution'] %}
+                        {{antecesor['num']}}: {{antecesor['name']}}
+                        <br/>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="col">
+                {% if 'next_evolution' in p %}
+                    {% for evolucion in p['next_evolution'] %}
+                        {{evolucion['num']}}: {{evolucion['name']}}
+                        <br/>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        <br/>
+    {% endfor %}
+{% endblock %}
