@@ -13,14 +13,15 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 app.config['JSON_AS_ASCII'] = False     # Se muestran tildes
 
 
-@app.route('/')
+
 def hello_world():
     return 'Hello, World!'
 
+@app.route('/')
 @app.route('/home')
 @app.route('/index')
 def home():
-    return render_template('index.html')
+    return render_template('interface.html')
 
 
 

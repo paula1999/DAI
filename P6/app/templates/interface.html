@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block contenido %}
+
+    <!-- Búsqueda -->
+    <h2>Buscador de Pokémon</h3>
+
+    <div class="container-fluid">
+        <div class="input-group"> <!-- Para que esten en linea -->
+          <strong>Número: </strong>
+          <input class="center" type="text" id="buscar_num" placeholder="Numero" required>
+        </div>
+        
+        <br>
+
+        <div class="input-group"> <!-- Para que esten en linea -->
+            <strong>Nombre: </strong>
+            <input class="center" type="text" id="buscar_nombre" placeholder="Nombre" required>
+        </div>
+
+        <br>
+
+        <div class="input-group"> <!-- Para que esten en linea -->
+            <strong>Tipo: </strong>
+            <input class="center" type="text" id="buscar_tipo" placeholder="Tipo" required>
+        </div>
+    </div>
+
+    <br>
+
+  
+
+    <!-- Tabla -->
+    <div class="table-responsive">
+        <div class="table-wrapper">
+            <div class="table-title">
+                <div class="row">
+					<div class="col-sm-6">
+						<h2>Manage <b>Pokémon</b></h2>
+					</div>
+					<div class="col-sm-6">
+						<a href="#addPokemon" class="btn btn-success" data-toggle="modal"><span>Añadir Pokémon</span></a>
+					</div>
+				</div>
+            </div>
+            <table class="table table-striped table-hover">
+				<thead>
+					<tr>
+						<th>Número</th>
+						<th>Nombre</th>
+						<th>Imagen</th>
+						<th>Tipo</th>
+						<th>Altura</th>
+                        <th>Peso</th>
+                        <th>Debilidades</th>
+                        <th>Previa evolución</th>
+                        <th>Siguiente evolución</th>
+                        <th>Acciones</th>
+					</tr>
+				</thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

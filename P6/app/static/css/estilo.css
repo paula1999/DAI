@@ -20,3 +20,7 @@ body {
   height: 100%;
 }
 
+.modo_nocturno {
+  color: white;
+  background-color: rgb(35, 80, 138)
+}
