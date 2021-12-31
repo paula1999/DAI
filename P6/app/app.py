@@ -89,7 +89,7 @@ def get_pokemon_N(N):
     if pokemon == None:
         return jsonify({"ERROR": "No se ha podido encontrar el Pokémon"}), 404
     else:
-        return jsonify(pokemon), 200
+        return jsonify(**pokemon), 200
 
 
 @app.route('/pokemon', methods=['POST'])
